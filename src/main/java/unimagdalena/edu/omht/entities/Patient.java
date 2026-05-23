@@ -14,7 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Patient {
+public class Patient { 
     @Id @GeneratedValue (strategy = GenerationType.UUID) private UUID id;
     @Column (nullable = false, name = "full_name") private String fullName;
     @Column (nullable = false) private String phone;
