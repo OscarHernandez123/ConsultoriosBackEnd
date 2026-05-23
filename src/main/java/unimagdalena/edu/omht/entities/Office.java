@@ -18,7 +18,7 @@ public class Office {
     @Id @GeneratedValue (strategy = GenerationType.UUID) private UUID id;
     @Column (nullable = false) private String location;
     @Enumerated(EnumType.STRING) @Column (nullable = false) private OfficeStatus status;
-    @Column (name = "create_at") private Instant createdAt;
+    @Column (name = "created_at") private Instant createdAt;
     @Column (name = "updated_at") private Instant updatedAt;
     @OneToMany (mappedBy = "office") private List<Appointment> appointments;
 }

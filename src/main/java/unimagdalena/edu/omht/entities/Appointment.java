@@ -15,7 +15,6 @@ import java.util.UUID;
 @Builder
 public class Appointment {
     @Id @GeneratedValue (strategy = GenerationType.UUID) private UUID id;
-    @Column (nullable = false) private String title;
     @Column (nullable = false, name = "start_at") private Instant startAt;
     @Column (name = "end_at") private Instant endAt;
     @Enumerated(EnumType.STRING) @Column (nullable = false) private AppointmentStatus status;
