@@ -6,17 +6,17 @@ import jakarta.validation.constraints.NotBlank;
 
 public class DoctorProfileDtos {
 
-     public record DoctorProfileCreateRequest(
+     public record CreateDoctorProfileRequest(
         @NotBlank String phone,
         @NotBlank String bio
     ){}
 
-    public record DoctorProfilePatchRequest(
+    public record PatchDoctorProfileRequest(
         String phone,
         String bio
     ){}
 
-    public record DoctorProfileUpdateRequest(
+    public record UpdateDoctorProfileRequest(
         @NotBlank String phone,
         @NotBlank String bio
     ){}

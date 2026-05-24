@@ -14,21 +14,21 @@ public class DoctorDtos {
         @NotBlank String fullName,
         @Email @NotBlank String email,
         @NotNull UUID specialtyId,
-        @Valid DoctorProfileDtos.DoctorProfileCreateRequest profile
+        @Valid DoctorProfileDtos.CreateDoctorProfileRequest profile
     ){}
 
     public record PatchDoctorRequest(
         String fullName,
         @Email String email,
         UUID specialtyId,
-        DoctorProfileDtos.DoctorProfilePatchRequest profile
+        DoctorProfileDtos.PatchDoctorProfileRequest profile
     ){}
 
     public record UpdateDoctorRequest(
         @NotBlank String fullName,
         @Email @NotBlank String email,
         @NotNull UUID specialtyId,
-        @Valid DoctorProfileDtos.DoctorProfileCreateRequest profile
+        @Valid DoctorProfileDtos.UpdateDoctorProfileRequest profile
     ){}
 
     public record DoctorResponse(

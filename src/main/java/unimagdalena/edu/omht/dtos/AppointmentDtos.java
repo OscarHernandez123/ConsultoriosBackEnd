@@ -26,7 +26,6 @@ public class AppointmentDtos {
 
     public record AppointmentResponse(
         UUID id,
-        String title,
         Instant startAt,
         Instant endAt,
         AppointmentStatus status,

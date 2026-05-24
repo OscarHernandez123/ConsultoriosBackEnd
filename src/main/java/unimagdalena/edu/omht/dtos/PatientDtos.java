@@ -20,14 +20,14 @@ public class PatientDtos {
         String fullName,
         String phone,
         @Email String email,
-        PatientStatus patientStatus
+        PatientStatus status
     ){}
 
     public record UpdatePatientRequest(
         @NotBlank String fullName,
         @NotBlank String phone,
         @NotBlank @Email String email,
-        @NotNull PatientStatus patientStatus
+        @NotNull PatientStatus status
     ){}
 
     public record PatientResponse(
