@@ -80,10 +80,10 @@ public interface AppointmentRepository extends JpaRepository <Appointment, UUID>
     @Query("""
             SELECT a.doctor.specialty.id AS specialtyId, 
                    a.doctor.specialty.title AS title,
-                   COUNT(a) AS cancelledOrNoShowAppointments
+                   COUNT(a) AS cancelledOrNoShowAppointment
             FROM Appointment a
             WHERE a.status IN ('CANCELLED', 'NO_SHOW')
-            GROUP BY a.specialty.id, a.specialty.title
+            GROUP BY a.doctor.specialty.id, a.doctor.specialty.title
             """)
     List<SpecialtyCancelledOrNoShowAppointmentProjection> countCancelledOrNoShowAppointmentBySpecialty();
 
