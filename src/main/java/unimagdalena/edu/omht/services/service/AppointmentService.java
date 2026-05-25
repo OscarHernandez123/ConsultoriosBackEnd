@@ -13,8 +13,8 @@ import unimagdalena.edu.omht.dtos.AppointmentDtos.CreateAppointmentRequest;
 public interface AppointmentService {
     AppointmentResponse create(CreateAppointmentRequest request);
     AppointmentResponse confirm(UUID appointmentId);
-    AppointmentResponse cancel(UUID appointmentId, AppointmentCancelRequest reason);
-    AppointmentResponse complete(UUID appointmentId, AppointmentCompleteRequest administrativeNote);
+    AppointmentResponse cancel(UUID appointmentId, AppointmentCancelRequest reasonRequest);
+    AppointmentResponse complete(UUID appointmentId, AppointmentCompleteRequest administrativeNoteRequest);
     AppointmentResponse markNoShow(UUID appointmentId);
     AppointmentResponse get(UUID appointmentId);
     Page<AppointmentResponse> list(Pageable pageable);

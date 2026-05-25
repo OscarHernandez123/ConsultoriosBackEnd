@@ -11,6 +11,7 @@ public class DoctorScheduleMapper {
         return DoctorSchedule.builder()
                 .dayOfWeek(request.dayOfWeek())
                 .startAt(request.startAt())
+                .endAt(request.endAt())
                 .doctor(doctor)
                 .build();
     }

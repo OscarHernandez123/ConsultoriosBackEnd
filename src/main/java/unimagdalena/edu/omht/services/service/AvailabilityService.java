@@ -7,5 +7,5 @@ import java.util.UUID;
 import unimagdalena.edu.omht.dtos.AvailabilityDtos.AvailabilitySlotResponse;
 
 public interface AvailabilityService {
-    List<AvailabilitySlotResponse> getAvailableSlots(UUID doctorId, LocalDate date);
+    List<AvailabilitySlotResponse> getAvailableSlots(UUID doctorId, LocalDate date, UUID appointmentTypeId);
 }

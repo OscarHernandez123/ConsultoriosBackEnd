@@ -1,5 +1,6 @@
 package unimagdalena.edu.omht.services.service;
 
+import java.time.DayOfWeek;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,5 +10,5 @@ import unimagdalena.edu.omht.dtos.DoctorScheduleDtos.DoctorScheduleResponse;
 public interface DoctorScheduleService {
     DoctorScheduleResponse create(CreateDoctorScheduleRequest request);
     List<DoctorScheduleResponse> listAll();
-    List<DoctorScheduleResponse> listByDoctor(UUID doctorId);
+    List<DoctorScheduleResponse> listByDoctor(UUID doctorId, DayOfWeek dayOfWeek);
 }
