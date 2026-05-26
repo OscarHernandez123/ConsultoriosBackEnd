@@ -30,10 +30,10 @@ public class DoctorScheduleServiceImpl implements DoctorScheduleService{
     private final DoctorRepository doctorRepository;
 
     @Override
-    public DoctorScheduleResponse create(CreateDoctorScheduleRequest request) {
+    public DoctorScheduleResponse create(CreateDoctorScheduleRequest request, UUID doctorId) {
 
-        Doctor doctor = doctorRepository.findById(request.doctorId())
-            .orElseThrow(() -> new ResourceNotFoundException("DoctorNotFound")); 
+        Doctor doctor = doctorRepository.findById(doctorId)
+            .orElseThrow(() -> new ResourceNotFoundException("Doctor not found")); 
             
         if(!request.startAt().isBefore(request.endAt())){
             throw new ValidationException("Invalid time range");

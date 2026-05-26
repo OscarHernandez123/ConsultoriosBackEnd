@@ -8,7 +8,7 @@ import unimagdalena.edu.omht.dtos.DoctorScheduleDtos.CreateDoctorScheduleRequest
 import unimagdalena.edu.omht.dtos.DoctorScheduleDtos.DoctorScheduleResponse;
 
 public interface DoctorScheduleService {
-    DoctorScheduleResponse create(CreateDoctorScheduleRequest request);
+    DoctorScheduleResponse create(CreateDoctorScheduleRequest request, UUID doctorId);
     List<DoctorScheduleResponse> listAll();
     List<DoctorScheduleResponse> listByDoctor(UUID doctorId, DayOfWeek dayOfWeek);
 }
