@@ -18,7 +18,7 @@ import unimagdalena.edu.omht.enums.PatientStatus;
 import unimagdalena.edu.omht.exceptions.ResourceNotFoundException;
 import unimagdalena.edu.omht.mappers.PatientMapper;
 import unimagdalena.edu.omht.repositories.PatientRepository;
-import unimagdalena.edu.omht.services.service.PatientService;
+import unimagdalena.edu.omht.services.serviceInterface.PatientService;
 
 @Service
 @RequiredArgsConstructor

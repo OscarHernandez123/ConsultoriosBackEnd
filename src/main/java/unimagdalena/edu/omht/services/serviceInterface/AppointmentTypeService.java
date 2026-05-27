@@ -1,4 +1,4 @@
-package unimagdalena.edu.omht.services.service;
+package unimagdalena.edu.omht.services.serviceInterface;
 
 import java.util.List;
 

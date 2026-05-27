@@ -16,7 +16,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import unimagdalena.edu.omht.dtos.AppointmentTypeDtos.AppointmentTypeResponse;
 import unimagdalena.edu.omht.dtos.AppointmentTypeDtos.CreateAppointmentTypeRequest;
-import unimagdalena.edu.omht.services.service.AppointmentTypeService;
+import unimagdalena.edu.omht.services.serviceInterface.AppointmentTypeService;
 
 @RestController
 @RequestMapping("/api/appointment-types")

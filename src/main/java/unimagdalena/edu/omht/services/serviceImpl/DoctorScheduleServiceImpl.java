@@ -18,7 +18,7 @@ import unimagdalena.edu.omht.exceptions.ResourceNotFoundException;
 import unimagdalena.edu.omht.mappers.DoctorScheduleMapper;
 import unimagdalena.edu.omht.repositories.DoctorRepository;
 import unimagdalena.edu.omht.repositories.DoctorScheduleRepository;
-import unimagdalena.edu.omht.services.service.DoctorScheduleService;
+import unimagdalena.edu.omht.services.serviceInterface.DoctorScheduleService;
 
 @Service
 @RequiredArgsConstructor

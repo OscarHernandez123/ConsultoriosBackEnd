@@ -13,7 +13,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import unimagdalena.edu.omht.dtos.SpecialtyDtos.CreateSpecialtyRequest;
 import unimagdalena.edu.omht.dtos.SpecialtyDtos.SpecialtyResponse;
-import unimagdalena.edu.omht.services.service.SpecialtyService;
+import unimagdalena.edu.omht.services.serviceInterface.SpecialtyService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

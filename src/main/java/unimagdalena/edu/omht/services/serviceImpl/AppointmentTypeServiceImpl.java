@@ -11,7 +11,7 @@ import unimagdalena.edu.omht.dtos.AppointmentTypeDtos.CreateAppointmentTypeReque
 import unimagdalena.edu.omht.entities.AppointmentType;
 import unimagdalena.edu.omht.mappers.AppointmentTypeMapper;
 import unimagdalena.edu.omht.repositories.AppointmentTypeRepository;
-import unimagdalena.edu.omht.services.service.AppointmentTypeService;
+import unimagdalena.edu.omht.services.serviceInterface.AppointmentTypeService;
 
 @Service
 @RequiredArgsConstructor

@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 import unimagdalena.edu.omht.dtos.DoctorDtos.CreateDoctorRequest;
 import unimagdalena.edu.omht.dtos.DoctorDtos.DoctorResponse;
 import unimagdalena.edu.omht.dtos.DoctorDtos.UpdateDoctorRequest;
-import unimagdalena.edu.omht.services.service.DoctorService;
+import unimagdalena.edu.omht.services.serviceInterface.DoctorService;
 
 @RestController
 @RequestMapping("/api/doctors")

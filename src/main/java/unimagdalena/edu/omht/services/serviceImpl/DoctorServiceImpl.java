@@ -19,7 +19,7 @@ import unimagdalena.edu.omht.exceptions.ResourceNotFoundException;
 import unimagdalena.edu.omht.mappers.DoctorMapper;
 import unimagdalena.edu.omht.repositories.DoctorRepository;
 import unimagdalena.edu.omht.repositories.SpecialtyRepository;
-import unimagdalena.edu.omht.services.service.DoctorService;
+import unimagdalena.edu.omht.services.serviceInterface.DoctorService;
 
 @Service
 @RequiredArgsConstructor

@@ -15,7 +15,7 @@ import unimagdalena.edu.omht.dtos.ReportDtos.DoctorProductivityResponse;
 import unimagdalena.edu.omht.dtos.ReportDtos.NoShowPatientResponse;
 import unimagdalena.edu.omht.dtos.ReportDtos.OfficeOccupancyResponse;
 import unimagdalena.edu.omht.dtos.ReportDtos.SpecialtyCancellationResponse;
-import unimagdalena.edu.omht.services.service.ReportService;
+import unimagdalena.edu.omht.services.serviceInterface.ReportService;
 
 @RestController
 @RequestMapping("/api/reports")

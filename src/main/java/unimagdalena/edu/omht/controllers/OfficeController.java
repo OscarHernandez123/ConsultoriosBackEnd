@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 import unimagdalena.edu.omht.dtos.OfficeDtos.CreateOfficeRequest;
 import unimagdalena.edu.omht.dtos.OfficeDtos.OfficeResponse;
 import unimagdalena.edu.omht.dtos.OfficeDtos.UpdateOfficeRequest;
-import unimagdalena.edu.omht.services.service.OfficeService;
+import unimagdalena.edu.omht.services.serviceInterface.OfficeService;
 
 @RestController
 @RequestMapping("/api/offices")

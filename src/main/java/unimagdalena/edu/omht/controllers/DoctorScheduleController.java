@@ -20,7 +20,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import unimagdalena.edu.omht.dtos.DoctorScheduleDtos.CreateDoctorScheduleRequest;
 import unimagdalena.edu.omht.dtos.DoctorScheduleDtos.DoctorScheduleResponse;
-import unimagdalena.edu.omht.services.service.DoctorScheduleService;
+import unimagdalena.edu.omht.services.serviceInterface.DoctorScheduleService;
 
 @RestController
 @RequestMapping("/api/doctors/{doctorId}/schedules")

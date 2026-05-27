@@ -18,7 +18,7 @@ import unimagdalena.edu.omht.enums.OfficeStatus;
 import unimagdalena.edu.omht.exceptions.ResourceNotFoundException;
 import unimagdalena.edu.omht.mappers.OfficeMapper;
 import unimagdalena.edu.omht.repositories.OfficeRepository;
-import unimagdalena.edu.omht.services.service.OfficeService;
+import unimagdalena.edu.omht.services.serviceInterface.OfficeService;
 
 @Service
 @RequiredArgsConstructor

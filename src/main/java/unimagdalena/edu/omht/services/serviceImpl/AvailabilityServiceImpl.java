@@ -22,7 +22,7 @@ import unimagdalena.edu.omht.repositories.AppointmentRepository;
 import unimagdalena.edu.omht.repositories.AppointmentTypeRepository;
 import unimagdalena.edu.omht.repositories.DoctorRepository;
 import unimagdalena.edu.omht.repositories.DoctorScheduleRepository;
-import unimagdalena.edu.omht.services.service.AvailabilityService;
+import unimagdalena.edu.omht.services.serviceInterface.AvailabilityService;
 
 @Service
 @RequiredArgsConstructor

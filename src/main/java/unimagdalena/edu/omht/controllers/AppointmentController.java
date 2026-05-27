@@ -24,7 +24,7 @@ import unimagdalena.edu.omht.dtos.AppointmentDtos.AppointmentCancelRequest;
 import unimagdalena.edu.omht.dtos.AppointmentDtos.AppointmentCompleteRequest;
 import unimagdalena.edu.omht.dtos.AppointmentDtos.AppointmentResponse;
 import unimagdalena.edu.omht.dtos.AppointmentDtos.CreateAppointmentRequest;
-import unimagdalena.edu.omht.services.service.AppointmentService;
+import unimagdalena.edu.omht.services.serviceInterface.AppointmentService;
 
 @RestController
 @RequestMapping("/api/appointments")

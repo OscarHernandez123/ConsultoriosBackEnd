@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import unimagdalena.edu.omht.dtos.AvailabilityDtos.AvailabilitySlotResponse;
-import unimagdalena.edu.omht.services.service.AvailabilityService;
+import unimagdalena.edu.omht.services.serviceInterface.AvailabilityService;
 
 @RestController
 @RequestMapping("/api/availability/doctors/{doctorId}")

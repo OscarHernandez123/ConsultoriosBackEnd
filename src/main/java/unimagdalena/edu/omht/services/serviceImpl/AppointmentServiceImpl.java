@@ -36,7 +36,7 @@ import unimagdalena.edu.omht.repositories.DoctorRepository;
 import unimagdalena.edu.omht.repositories.DoctorScheduleRepository;
 import unimagdalena.edu.omht.repositories.OfficeRepository;
 import unimagdalena.edu.omht.repositories.PatientRepository;
-import unimagdalena.edu.omht.services.service.AppointmentService;
+import unimagdalena.edu.omht.services.serviceInterface.AppointmentService;
 
 @Service
 @RequiredArgsConstructor

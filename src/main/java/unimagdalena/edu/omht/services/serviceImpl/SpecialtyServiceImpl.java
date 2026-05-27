@@ -11,7 +11,7 @@ import unimagdalena.edu.omht.dtos.SpecialtyDtos.SpecialtyResponse;
 import unimagdalena.edu.omht.entities.Specialty;
 import unimagdalena.edu.omht.mappers.SpecialtyMapper;
 import unimagdalena.edu.omht.repositories.SpecialtyRepository;
-import unimagdalena.edu.omht.services.service.SpecialtyService;
+import unimagdalena.edu.omht.services.serviceInterface.SpecialtyService;
 
 @Service
 @RequiredArgsConstructor
