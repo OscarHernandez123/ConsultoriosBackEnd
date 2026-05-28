@@ -7,8 +7,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.github.dockerjava.api.exception.ConflictException;
-
 import unimagdalena.edu.omht.dtos.AppointmentDtos.AppointmentCancelRequest;
 import unimagdalena.edu.omht.dtos.AppointmentDtos.AppointmentCompleteRequest;
 import unimagdalena.edu.omht.dtos.AppointmentDtos.AppointmentResponse;
@@ -16,12 +14,14 @@ import unimagdalena.edu.omht.dtos.AppointmentDtos.CreateAppointmentRequest;
 import unimagdalena.edu.omht.entities.Appointment;
 import unimagdalena.edu.omht.entities.AppointmentType;
 import unimagdalena.edu.omht.entities.Doctor;
+import unimagdalena.edu.omht.entities.DoctorSchedule;
 import unimagdalena.edu.omht.entities.Office;
 import unimagdalena.edu.omht.entities.Patient;
 import unimagdalena.edu.omht.enums.AppointmentStatus;
 import unimagdalena.edu.omht.enums.OfficeStatus;
 import unimagdalena.edu.omht.enums.PatientStatus;
 import unimagdalena.edu.omht.exceptions.BusinessException;
+import unimagdalena.edu.omht.exceptions.ConflictException;
 import unimagdalena.edu.omht.repositories.AppointmentRepository;
 import unimagdalena.edu.omht.repositories.AppointmentTypeRepository;
 import unimagdalena.edu.omht.repositories.DoctorRepository;
@@ -37,8 +37,10 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 import java.util.Collections;
+import java.util.List;
 import java.time.DayOfWeek;
 import java.time.Instant;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
@@ -109,26 +111,43 @@ public class AppointmentServiceImplTest {
     @Test
     void shouldCreateAppointmentAndCalculateEndAtCorrectly(){
 
-        Instant startAt = Instant.now();
-        Instant endAtTest = Instant.now().plus(30, ChronoUnit.MINUTES);
+        Instant startAt = Instant.parse("2026-12-01T10:00:00Z");
+        Instant endAtTest = startAt.plus(30, ChronoUnit.MINUTES);
 
         CreateAppointmentRequest request = new CreateAppointmentRequest(
-            startAt, doctorId, patientId, officeId, typeId);
+                startAt, doctorId, patientId, officeId, typeId);
 
         Appointment savedAppointment = Appointment.builder()
-            .id(UUID.randomUUID())
-            .doctor(doctor)
-            .patient(patient)
-            .office(office)
-            .appointmentType(type)
-            .build();
+                .id(UUID.randomUUID())
+                .doctor(doctor)
+                .patient(patient)
+                .office(office)
+                .appointmentType(type)
+                .startAt(startAt)
+                .endAt(endAtTest)
+                .build();
+        
+        LocalTime startShift = LocalTime.of(8, 0);   
+        LocalTime endShift = LocalTime.of(18, 0);
+
+        DoctorSchedule fakeSchedule = DoctorSchedule.builder()
+                .doctor(doctor)
+                .dayOfWeek(DayOfWeek.TUESDAY)
+                .startAt(startShift)
+                .endAt(endShift)
+                .build();
+
 
         when(doctorRepository.findById(doctorId)).thenReturn(Optional.of(doctor));
         when(patientRepository.findById(patientId)).thenReturn(Optional.of(patient));
         when(officeRepository.findById(officeId)).thenReturn(Optional.of(office));
         when(typeRepository.findById(typeId)).thenReturn(Optional.of(type));
+        when(scheduleRepository.findByDoctorIdAndDayOfWeek(eq(doctorId), any(java.time.DayOfWeek.class)))
+                .thenReturn(java.util.List.of(fakeSchedule));
+        when(scheduleRepository.isWithinWorkingHours(
+                eq(doctor.getId()), any(DayOfWeek.class), any(LocalTime.class), any(LocalTime.class))).thenReturn(true);
         when(appointmentRepository.save(any(Appointment.class))).thenReturn(savedAppointment);
-        
+
         AppointmentResponse response = appointmentService.create(request);
 
         assertThat(response).isNotNull();
@@ -165,15 +184,32 @@ public class AppointmentServiceImplTest {
     @Test
     void shouldThrowExceptionWhenDoctorHasOverlappingAppointment(){
 
-        Instant startAt = Instant.now().plus(1, ChronoUnit.DAYS);
+        Instant startAt = Instant.parse("2026-12-01T10:00:00Z");
 
         CreateAppointmentRequest request = new CreateAppointmentRequest(
             startAt, doctorId, patientId, officeId, typeId);
             
+        LocalTime startShift = LocalTime.of(8, 0);
+        LocalTime endShift = LocalTime.of(18, 0);
+
+        DoctorSchedule fakeSchedule = DoctorSchedule.builder()
+                .doctor(doctor)
+                .dayOfWeek(DayOfWeek.TUESDAY)
+                .startAt(startShift)
+                .endAt(endShift)
+                .build();
+
         when(doctorRepository.findById(doctorId)).thenReturn(Optional.of(doctor));
         when(patientRepository.findById(patientId)).thenReturn(Optional.of(patient));
         when(officeRepository.findById(officeId)).thenReturn(Optional.of(office));
         when(typeRepository.findById(typeId)).thenReturn(Optional.of(type));
+
+        when(scheduleRepository.findByDoctorIdAndDayOfWeek(eq(doctorId), any(DayOfWeek.class)))
+                .thenReturn(List.of(fakeSchedule));
+        when(scheduleRepository.isWithinWorkingHours(
+                eq(doctorId), any(DayOfWeek.class), any(LocalTime.class), any(LocalTime.class)))
+                .thenReturn(true);
+
         when(appointmentRepository.existsOverlappingDoctorAppointment(eq(doctorId), eq(request.startAt()), any(Instant.class)))
             .thenReturn(true);
 
@@ -189,17 +225,34 @@ public class AppointmentServiceImplTest {
     @Test
     void shouldThrowExceptionWhenOfficeHasOverlappingAppointment(){
 
-        Instant startAt = Instant.now().plus(1, ChronoUnit.DAYS);
-
+        Instant startAt = Instant.parse("2026-12-01T10:00:00Z");
+        
         CreateAppointmentRequest request = new CreateAppointmentRequest(
-            startAt, doctorId, patientId, officeId, typeId);
-            
+                startAt, doctorId, patientId, officeId, typeId);
+
+        LocalTime startShift = LocalTime.of(8, 0);
+        LocalTime endShift = LocalTime.of(18, 0);
+
+        DoctorSchedule fakeSchedule = DoctorSchedule.builder()
+                .doctor(doctor)
+                .dayOfWeek(DayOfWeek.TUESDAY)
+                .startAt(startShift)
+                .endAt(endShift)
+                .build();
+
         when(doctorRepository.findById(doctorId)).thenReturn(Optional.of(doctor));
         when(patientRepository.findById(patientId)).thenReturn(Optional.of(patient));
         when(officeRepository.findById(officeId)).thenReturn(Optional.of(office));
         when(typeRepository.findById(typeId)).thenReturn(Optional.of(type));
+
+        when(scheduleRepository.findByDoctorIdAndDayOfWeek(eq(doctorId), any(DayOfWeek.class)))
+                .thenReturn(List.of(fakeSchedule));
+        when(scheduleRepository.isWithinWorkingHours(
+                eq(doctorId), any(DayOfWeek.class), any(LocalTime.class), any(LocalTime.class)))
+                .thenReturn(true);
+
         when(appointmentRepository.existsOverlappingOfficeAppointment(eq(officeId), eq(request.startAt()), any(Instant.class)))
-            .thenReturn(true);
+                .thenReturn(true);
 
         Exception error = assertThrows(ConflictException.class, () -> {
             appointmentService.create(request);
@@ -225,7 +278,7 @@ public class AppointmentServiceImplTest {
         when(scheduleRepository.findByDoctorIdAndDayOfWeek(doctorId, requestedDay))
             .thenReturn(Collections.emptyList());
 
-        Exception error = assertThrows(ConflictException.class, () -> {
+        Exception error = assertThrows(BusinessException.class, () -> {
             appointmentService.create(request);
         });
 

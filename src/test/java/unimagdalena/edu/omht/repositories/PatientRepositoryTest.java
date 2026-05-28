@@ -30,7 +30,7 @@ public class PatientRepositoryTest extends AbstractRepositoryIT{
 
         assertThat(foundPatient.get().getId()).isNotNull();
         assertThat(foundPatient.get().getFullName()).isEqualTo("Oscar Turizo");
-        assertThat(foundPatient.get().getEmail()).isEqualTo("oscar@gmai.com");
+        assertThat(foundPatient.get().getEmail()).isEqualTo("oscar@gmail.com");
         assertThat(foundPatient.get().getStatus()).isEqualTo(PatientStatus.ACTIVE);
     }
 }

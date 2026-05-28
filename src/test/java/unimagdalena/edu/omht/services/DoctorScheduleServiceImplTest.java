@@ -6,12 +6,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.github.dockerjava.api.exception.ConflictException;
-
 import unimagdalena.edu.omht.dtos.DoctorScheduleDtos.CreateDoctorScheduleRequest;
 import unimagdalena.edu.omht.dtos.DoctorScheduleDtos.DoctorScheduleResponse;
 import unimagdalena.edu.omht.entities.Doctor;
+import unimagdalena.edu.omht.entities.DoctorProfile;
 import unimagdalena.edu.omht.entities.DoctorSchedule;
+import unimagdalena.edu.omht.entities.Specialty;
+import unimagdalena.edu.omht.exceptions.ConflictException;
 import unimagdalena.edu.omht.repositories.DoctorRepository;
 import unimagdalena.edu.omht.repositories.DoctorScheduleRepository;
 import unimagdalena.edu.omht.services.serviceImpl.DoctorScheduleServiceImpl;
@@ -45,12 +46,19 @@ public class DoctorScheduleServiceImplTest {
         CreateDoctorScheduleRequest request = new CreateDoctorScheduleRequest(
             DayOfWeek.FRIDAY, startAt, endAt);
 
+        DoctorProfile profile = DoctorProfile.builder().phone("3015975842").bio("doctor").build();
+        
+        UUID specialtyId = UUID.randomUUID();
         UUID doctorId = UUID.randomUUID();
+        
+        Specialty specialty = Specialty.builder().id(specialtyId).title("Cargiology").build();
 
         Doctor doctor = Doctor.builder()
             .id(doctorId)
             .fullName("Oscar Turizo")
             .email("oscar@gmail.com")
+            .doctorProfile(profile)
+            .specialty(specialty)
             .build();
 
         DoctorSchedule savedSchedule = DoctorSchedule.builder()

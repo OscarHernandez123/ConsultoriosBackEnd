@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import unimagdalena.edu.omht.entities.Doctor;
 import unimagdalena.edu.omht.entities.Specialty;
 
-public class DoctorRepositoryTest {
+public class DoctorRepositoryTest extends AbstractRepositoryIT{
 
     @Autowired DoctorRepository doctorRepository;
 

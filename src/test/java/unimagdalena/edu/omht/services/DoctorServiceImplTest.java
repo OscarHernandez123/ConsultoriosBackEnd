@@ -10,6 +10,7 @@ import unimagdalena.edu.omht.dtos.DoctorDtos.CreateDoctorRequest;
 import unimagdalena.edu.omht.dtos.DoctorDtos.DoctorResponse;
 import unimagdalena.edu.omht.dtos.DoctorProfileDtos.CreateDoctorProfileRequest;
 import unimagdalena.edu.omht.entities.Doctor;
+import unimagdalena.edu.omht.entities.DoctorProfile;
 import unimagdalena.edu.omht.entities.Specialty;
 import unimagdalena.edu.omht.exceptions.ResourceNotFoundException;
 import unimagdalena.edu.omht.repositories.DoctorRepository;
@@ -44,6 +45,8 @@ public class DoctorServiceImplTest {
         CreateDoctorRequest request = new CreateDoctorRequest(
             "Oscar", "oscar@gmail.com", specialtyId, profileRequest);
         
+        DoctorProfile profile = DoctorProfile.builder().phone("3015975842").bio("doctor").build();
+
         Specialty specialty = Specialty.builder()
             .id(specialtyId)
             .title("Cardiology")
@@ -54,6 +57,7 @@ public class DoctorServiceImplTest {
             .fullName("Oscar Turizo")
             .email("oscar@gmail.com")
             .specialty(specialty)
+            .doctorProfile(profile)
             .build();
 
         when(specialtyRepository.findById(specialtyId)).thenReturn(Optional.of(specialty));
