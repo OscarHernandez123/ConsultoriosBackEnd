@@ -110,6 +110,7 @@ public class AppointmentRepositoryTest extends AbstractRepositoryIT{
         Instant start1 = today.atTime(10, 0)
                 .atZone(ZoneId.systemDefault()) 
                 .toInstant();  
+                
         Instant end1 = start1.plus(type.getDurationMinutes(), ChronoUnit.MINUTES);
 
         Appointment appointment1 = Appointment.builder()
