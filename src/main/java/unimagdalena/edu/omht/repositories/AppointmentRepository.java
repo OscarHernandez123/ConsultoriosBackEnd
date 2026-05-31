@@ -35,7 +35,7 @@ public interface AppointmentRepository extends JpaRepository <Appointment, UUID>
         );
 
         @Query("""
-                SELECT COUNT > 0
+                SELECT COUNT(a) > 0
                 FROM Appointment a
                 WHERE a.office.id = :officeId
                 AND a.status IN ('SCHEDULED', 'CONFIRMED')

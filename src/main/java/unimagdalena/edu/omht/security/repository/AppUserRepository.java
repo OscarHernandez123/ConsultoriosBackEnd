@@ -9,5 +9,5 @@ import unimagdalena.edu.omht.security.domine.AppUser;
 
 public interface AppUserRepository extends JpaRepository<AppUser, UUID>{
     Optional<AppUser> findByEmailIgnoreCase(String email);
-    boolean exiexistsByEmailIgnoreCase(String email);
+    boolean existsByEmailIgnoreCase(String email);
 }

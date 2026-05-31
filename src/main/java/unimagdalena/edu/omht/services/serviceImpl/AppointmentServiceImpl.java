@@ -110,14 +110,14 @@ public class AppointmentServiceImpl implements AppointmentService{
             .existsOverlappingDoctorAppointment(doctor.getId(), request.startAt(), endAt);
 
         if(hasDoctorOverlap){
-            throw new ConflictException("Doctor is already booked for this time slot.");
+            throw new ConflictException("Doctor is already booked for this time slot");
         }
 
         boolean hasOfficeOverlap = appointmentRepository
             .existsOverlappingOfficeAppointment(office.getId(), request.startAt(), endAt);
 
         if(hasOfficeOverlap){
-            throw new ConflictException("Office is already booked for this time slot.");
+            throw new ConflictException("Office is already booked for this time slot");
         }
 
         boolean hasPatientOverlap = appointmentRepository

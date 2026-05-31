@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.UUID;
 
 import jakarta.validation.constraints.NotNull;
+import unimagdalena.edu.omht.dtos.DoctorDtos.DoctorResponse;
 
 public class DoctorScheduleDtos {
 
@@ -19,6 +20,6 @@ public class DoctorScheduleDtos {
         DayOfWeek dayOfWeek,
         LocalTime startAt,
         LocalTime endAt,
-        DoctorDtos.DoctorResponse doctor
+        DoctorResponse doctor
     ){}
 }

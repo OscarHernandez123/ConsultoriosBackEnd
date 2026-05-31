@@ -19,6 +19,7 @@ public class Patient {
     @Column (nullable = false, name = "full_name") private String fullName;
     @Column (nullable = false) private String phone;
     @Column (nullable = false) private String email;
+    @Column(unique = true, nullable = false) private String identification;
     @Enumerated(EnumType.STRING) @Column (nullable = false) private PatientStatus status;
     @Column (name = "createdAt") private Instant createdAt;
     @Column (name = "updatedAt") private Instant updatedAt;
