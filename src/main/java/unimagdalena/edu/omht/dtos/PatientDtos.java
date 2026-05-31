@@ -13,13 +13,15 @@ public class PatientDtos {
     public record CreatePatientRequest(
         @NotBlank String fullName,
         @NotBlank String phone,
-        @Email @NotBlank String email
+        @Email @NotBlank String email,
+        @NotBlank String identification
     ){}
 
     public record PatchPatientRequest(
         String fullName,
         String phone,
         @Email String email,
+        String identification,
         PatientStatus status
     ){}
 
@@ -27,6 +29,7 @@ public class PatientDtos {
         @NotBlank String fullName,
         @NotBlank String phone,
         @NotBlank @Email String email,
+        @NotBlank String identification,
         @NotNull PatientStatus status
     ){}
 
@@ -35,6 +38,7 @@ public class PatientDtos {
         String fullName,
         String phone,
         String email,
+        String identification,
         PatientStatus status,
         Instant createdAt,
         Instant updatedAt

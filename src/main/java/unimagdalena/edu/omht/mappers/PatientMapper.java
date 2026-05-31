@@ -14,6 +14,7 @@ public class PatientMapper{
                 .fullName(request.fullName())
                 .phone(request.phone())
                 .email(request.email())
+                .identification(request.identification())
                 .status(PatientStatus.ACTIVE)
                 .build();                                
     }
@@ -32,6 +33,10 @@ public class PatientMapper{
             patient.setEmail(request.email());
         }
 
+        if(request.identification() != null){
+            patient.setIdentification(request.identification());
+        }
+
         if(request.status() != null){
             patient.setStatus(request.status());
         }
@@ -41,6 +46,7 @@ public class PatientMapper{
         patient.setFullName(request.fullName());
         patient.setPhone(request.phone());
         patient.setEmail(request.email());
+        patient.setIdentification(request.identification());
         patient.setStatus(request.status());
     }
 
@@ -50,6 +56,7 @@ public class PatientMapper{
             patient.getFullName(), 
             patient.getPhone(),
             patient.getEmail(),
+            patient.getIdentification(),
             patient.getStatus(),
             patient.getCreatedAt(),
             patient.getUpdatedAt()

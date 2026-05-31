@@ -41,7 +41,8 @@ public class PatientControllerTest {
         UpdatePatientRequest request = new UpdatePatientRequest(
                 "Oscar Turizo", 
                 "3001234567", 
-                "oscar@gmail.com", 
+                "oscar@gmail.com",
+                "110062304" ,
                 PatientStatus.ACTIVE
         );
 
@@ -49,7 +50,8 @@ public class PatientControllerTest {
                 patientId, 
                 "Oscar Turizo", 
                 "3001234567", 
-                "oscar@gmail.com", 
+                "oscar@gmail.com",
+                "1100623604",
                 PatientStatus.ACTIVE,
                 null,
                 null

@@ -161,6 +161,7 @@ public class AppointmentRepositoryTest extends AbstractRepositoryIT{
             .fullName("Oscar Turizo")
             .email("oscar@gmail.com")
             .phone("3014975842")
+            .identification("1100623604")
             .status(PatientStatus.ACTIVE)
             .build();
 

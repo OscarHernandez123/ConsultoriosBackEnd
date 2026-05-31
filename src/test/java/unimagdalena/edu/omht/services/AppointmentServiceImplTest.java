@@ -91,6 +91,7 @@ public class AppointmentServiceImplTest {
             .id(patientId)
             .fullName("Manuel Hernandez")
             .email("manuel@gmail.com")
+            .identification("1100623604")
             .status(PatientStatus.ACTIVE)
             .build();
 
