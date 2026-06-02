@@ -7,6 +7,7 @@ import unimagdalena.edu.omht.dtos.DoctorDtos.UpdateDoctorRequest;
 import unimagdalena.edu.omht.entities.Doctor;
 import unimagdalena.edu.omht.entities.DoctorProfile;
 import unimagdalena.edu.omht.entities.Specialty;
+import unimagdalena.edu.omht.enums.DoctorStatus;
 
 public class DoctorMapper {
 
@@ -21,6 +22,7 @@ public class DoctorMapper {
                 .fullName(request.fullName())
                 .email(request.email())
                 .specialty(specialty)
+                .status(DoctorStatus.ACTIVE)
                 .doctorProfile(profile)
                 .build();
     }
@@ -33,6 +35,10 @@ public class DoctorMapper {
 
         if(request.email() != null){
             doctor.setEmail(request.email());
+        }
+
+        if(request.status() != null){
+            doctor.setStatus(request.status());
         }
 
         if(specialty != null){
@@ -53,6 +59,7 @@ public class DoctorMapper {
     public static void update(Doctor doctor, UpdateDoctorRequest request, Specialty specialty){
         doctor.setFullName(request.fullName());
         doctor.setEmail(request.email());
+        doctor.setStatus(request.status());
         doctor.setSpecialty(specialty);
         if (doctor.getDoctorProfile() == null) {
             doctor.setDoctorProfile(new DoctorProfile());
@@ -66,6 +73,7 @@ public class DoctorMapper {
             doctor.getFullName(), 
             doctor.getEmail(), 
             DoctorProfileMapper.toResponse(doctor.getDoctorProfile()), 
+            doctor.getStatus(),
             doctor.getCreatedAt(), 
             doctor.getUpdatedAt(), 
             SpecialtyMapper.toResponse(doctor.getSpecialty())

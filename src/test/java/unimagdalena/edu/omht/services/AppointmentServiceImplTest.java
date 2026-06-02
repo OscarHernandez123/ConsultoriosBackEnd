@@ -18,6 +18,7 @@ import unimagdalena.edu.omht.entities.DoctorSchedule;
 import unimagdalena.edu.omht.entities.Office;
 import unimagdalena.edu.omht.entities.Patient;
 import unimagdalena.edu.omht.enums.AppointmentStatus;
+import unimagdalena.edu.omht.enums.DoctorStatus;
 import unimagdalena.edu.omht.enums.OfficeStatus;
 import unimagdalena.edu.omht.enums.PatientStatus;
 import unimagdalena.edu.omht.exceptions.BusinessException;
@@ -85,6 +86,7 @@ public class AppointmentServiceImplTest {
             .id(doctorId)
             .fullName("Oscar Turizo")
             .email("oscar@gmail.com")
+            .status(DoctorStatus.ACTIVE)
             .build();
 
         patient = Patient.builder()
@@ -97,6 +99,7 @@ public class AppointmentServiceImplTest {
 
         office = Office.builder()
             .id(officeId)
+            .name("office 101")
             .location("101")
             .status(OfficeStatus.ACTIVE)
             .build();

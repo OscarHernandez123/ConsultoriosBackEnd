@@ -16,6 +16,7 @@ import unimagdalena.edu.omht.entities.Doctor;
 import unimagdalena.edu.omht.entities.Office;
 import unimagdalena.edu.omht.entities.Patient;
 import unimagdalena.edu.omht.enums.AppointmentStatus;
+import unimagdalena.edu.omht.enums.DoctorStatus;
 import unimagdalena.edu.omht.enums.OfficeStatus;
 import unimagdalena.edu.omht.enums.PatientStatus;
 import unimagdalena.edu.omht.projections.OfficeOccupancyProjection;
@@ -39,6 +40,7 @@ public class AppointmentRepositoryTest extends AbstractRepositoryIT{
         Doctor doctor = Doctor.builder()
             .fullName("Oscar Turizo")
             .email("oscar@gmail.com")
+            .status(DoctorStatus.ACTIVE)
             .build();
 
         doctorRepository.save(doctor);
@@ -92,6 +94,7 @@ public class AppointmentRepositoryTest extends AbstractRepositoryIT{
     void shouldGetOfficeOccupation(){
         
         Office office = Office.builder()
+            .name("office 101")
             .location("101")
             .status(OfficeStatus.ACTIVE)
             .build();
@@ -150,7 +153,7 @@ public class AppointmentRepositoryTest extends AbstractRepositoryIT{
         assertThat(result).isNotEmpty();
         assertThat(result).hasSize(1);        
         OfficeOccupancyProjection projection = result.get(0);      
-        assertThat(projection.getLocation()).isEqualTo("101");
+        assertThat(projection.getName()).isEqualTo("office 101");
         assertThat(projection.getOccupiedMinutes()).isEqualTo(60L);
     }
 

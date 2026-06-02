@@ -4,6 +4,6 @@ import java.util.UUID;
 
 public interface OfficeOccupancyProjection {
     UUID getOfficeId();
-    String getLocation();
+    String getName();
     Long getOccupiedMinutes();
 }

@@ -12,6 +12,7 @@ import unimagdalena.edu.omht.entities.Doctor;
 import unimagdalena.edu.omht.entities.DoctorProfile;
 import unimagdalena.edu.omht.entities.DoctorSchedule;
 import unimagdalena.edu.omht.entities.Specialty;
+import unimagdalena.edu.omht.enums.DoctorStatus;
 import unimagdalena.edu.omht.exceptions.ConflictException;
 import unimagdalena.edu.omht.repositories.DoctorRepository;
 import unimagdalena.edu.omht.repositories.DoctorScheduleRepository;
@@ -57,6 +58,7 @@ public class DoctorScheduleServiceImplTest {
             .id(doctorId)
             .fullName("Oscar Turizo")
             .email("oscar@gmail.com")
+            .status(DoctorStatus.ACTIVE)
             .doctorProfile(profile)
             .specialty(specialty)
             .build();

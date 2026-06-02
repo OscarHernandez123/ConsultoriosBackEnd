@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import unimagdalena.edu.omht.entities.Doctor;
 import unimagdalena.edu.omht.entities.DoctorSchedule;
+import unimagdalena.edu.omht.enums.DoctorStatus;
 
 public class DoctorScheduleTest extends AbstractRepositoryIT{
 
@@ -23,6 +24,7 @@ public class DoctorScheduleTest extends AbstractRepositoryIT{
         Doctor doctor = Doctor.builder()
             .fullName("Oscar Turizo")
             .email("oscar@gmail.com")
+            .status(DoctorStatus.ACTIVE)
             .build();
 
         doctorRepository.save(doctor);

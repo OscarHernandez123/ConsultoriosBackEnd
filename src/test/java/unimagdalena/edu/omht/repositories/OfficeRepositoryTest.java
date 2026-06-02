@@ -18,6 +18,7 @@ public class OfficeRepositoryTest extends AbstractRepositoryIT{
     void shouldFindById(){
 
         Office office = Office.builder()
+            .name("office")
             .location("101")
             .status(OfficeStatus.ACTIVE)
             .build();

@@ -14,6 +14,7 @@ import unimagdalena.edu.omht.dtos.DoctorDtos.DoctorResponse;
 import unimagdalena.edu.omht.dtos.DoctorDtos.PatchDoctorRequest;
 import unimagdalena.edu.omht.dtos.DoctorDtos.UpdateDoctorRequest;
 import unimagdalena.edu.omht.entities.Doctor;
+import unimagdalena.edu.omht.entities.DoctorProfile;
 import unimagdalena.edu.omht.entities.Specialty;
 import unimagdalena.edu.omht.exceptions.ResourceNotFoundException;
 import unimagdalena.edu.omht.mappers.DoctorMapper;
@@ -37,6 +38,18 @@ public class DoctorServiceImpl implements DoctorService{
             .orElseThrow(() -> new ResourceNotFoundException("Specialty not found"));
 
         Doctor doctor = DoctorMapper.toEntity(request, specialty);
+        DoctorProfile profile = new DoctorProfile();
+        
+        if (request.profile() != null) {
+            profile.setPhone(request.profile().phone());
+            profile.setBio(request.profile().bio() != null ? request.profile().bio() : "Medical professional");
+        } else {
+            profile.setPhone("No register");
+            profile.setBio("Medical professional");
+        }
+
+        profile.setDoctor(doctor);
+        doctor.setDoctorProfile(profile); 
 
         Doctor saved = doctorRepository.save(doctor);
 

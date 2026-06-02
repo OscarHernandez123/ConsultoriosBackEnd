@@ -27,7 +27,7 @@ public class ReportServiceImpl implements ReportService{
             .stream()
             .map(p -> new OfficeOccupancyResponse(
                 p.getOfficeId(),
-                p.getLocation(),
+                p.getName(),
                 p.getOccupiedMinutes() != null ? p.getOccupiedMinutes() : 0L
             ))
             .toList();
