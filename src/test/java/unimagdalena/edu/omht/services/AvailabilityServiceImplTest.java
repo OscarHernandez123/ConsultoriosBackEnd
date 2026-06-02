@@ -43,6 +43,7 @@ public class AvailabilityServiceImplTest {
     @Mock DoctorRepository doctorRepository;
 
     @InjectMocks AvailabilityServiceImpl availabilityService;
+    
     @Test
     void shouldReturnAvailableSlotsSuccessfully() {
         

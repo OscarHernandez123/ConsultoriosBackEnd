@@ -79,12 +79,12 @@ public interface AppointmentRepository extends JpaRepository <Appointment, UUID>
 
         @Query("""
                 SELECT a.office.id AS officeId,
-                        a.office.location AS location,
+                        a.office.name AS name,
                         SUM(a.appointmentType.durationMinutes) AS occupiedMinutes
                 FROM Appointment a
                 WHERE a.status IN ('SCHEDULED', 'CONFIRMED', 'COMPLETED')
                 AND a.startAt BETWEEN :startDate AND :endDate
-                GROUP BY a.office.id, a.office.location
+                GROUP BY a.office.id, a.office.name
                 """)
         List<OfficeOccupancyProjection> getOfficeOccupation(
                 @Param ("startDate") Instant startDate,

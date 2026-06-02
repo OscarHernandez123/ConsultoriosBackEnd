@@ -6,6 +6,7 @@ import unimagdalena.edu.omht.dtos.DoctorDtos.CreateDoctorRequest;
 import unimagdalena.edu.omht.dtos.DoctorDtos.DoctorResponse;
 import unimagdalena.edu.omht.dtos.DoctorProfileDtos.CreateDoctorProfileRequest;
 import unimagdalena.edu.omht.dtos.DoctorProfileDtos.DoctorProfileResponse;
+import unimagdalena.edu.omht.enums.DoctorStatus;
 import unimagdalena.edu.omht.services.serviceInterface.DoctorService;
 
 import org.junit.jupiter.api.Test;
@@ -43,7 +44,7 @@ public class DoctorControllerTest {
         DoctorProfileResponse profileResponse = new DoctorProfileResponse(UUID.randomUUID(), "3135569055", "Doctor");
 
         DoctorResponse response = new DoctorResponse(
-            UUID.randomUUID(), "Oscar Turizo", "oscar@gmail.com", profileResponse, null, null, null);
+            UUID.randomUUID(), "Oscar Turizo", "oscar@gmail.com", profileResponse, DoctorStatus.ACTIVE, null, null, null);
 
         when(doctorService.create(any(CreateDoctorRequest.class))).thenReturn(response);
 
@@ -67,7 +68,7 @@ public class DoctorControllerTest {
         DoctorProfileResponse profileResponse = new DoctorProfileResponse(UUID.randomUUID(), "3135569055", "Doctor");
 
         DoctorResponse response = new DoctorResponse(
-            UUID.randomUUID(), "Oscar Turizo", "oscar@gmail.com", profileResponse, null, null, null);
+            UUID.randomUUID(), "Oscar Turizo", "oscar@gmail.com", profileResponse, DoctorStatus.ACTIVE, null, null, null);
 
         when(doctorService.create(any(CreateDoctorRequest.class))).thenReturn(response);
 

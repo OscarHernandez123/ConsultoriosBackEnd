@@ -17,6 +17,7 @@ import java.util.UUID;
 public class Office {
     @Id @GeneratedValue (strategy = GenerationType.UUID) private UUID id;
     @Column (nullable = false) private String location;
+    @Column (nullable = false, name = "name") private String name;
     @Enumerated(EnumType.STRING) @Column (nullable = false) private OfficeStatus status;
     @Column (name = "created_at") private Instant createdAt;
     @Column (name = "updated_at") private Instant updatedAt;

@@ -12,6 +12,7 @@ import unimagdalena.edu.omht.dtos.DoctorProfileDtos.CreateDoctorProfileRequest;
 import unimagdalena.edu.omht.entities.Doctor;
 import unimagdalena.edu.omht.entities.DoctorProfile;
 import unimagdalena.edu.omht.entities.Specialty;
+import unimagdalena.edu.omht.enums.DoctorStatus;
 import unimagdalena.edu.omht.exceptions.ResourceNotFoundException;
 import unimagdalena.edu.omht.repositories.DoctorRepository;
 import unimagdalena.edu.omht.repositories.SpecialtyRepository;
@@ -56,6 +57,7 @@ public class DoctorServiceImplTest {
             .id(UUID.randomUUID())
             .fullName("Oscar Turizo")
             .email("oscar@gmail.com")
+            .status(DoctorStatus.ACTIVE)
             .specialty(specialty)
             .doctorProfile(profile)
             .build();
